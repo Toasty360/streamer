@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,48 +9,38 @@
 
     <link href="https://vjs.zencdn.net/8.0.4/video-js.css" rel="stylesheet" />
     <style>
-      * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-      }
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
     </style>
-  </head>
+    
+</head>
 
-  <body>
-    <video
-      id="_player"
-      class="video-js"
-      controls
-      preload="auto"
-      data-setup="{}"
-      style="width: 100%; height: 100vh"
-    ></video>
-  </body>
-  <script src="https://vjs.zencdn.net/8.0.4/video.min.js"></script>
-  <script defer type="text/javascript">
-    // loadme(){
+<body>
+        <video id="_player" class="video-js" controls preload="auto" data-setup="{}" style="width: 100%; height: 100vh;">
+            <source
+                src="https://buc01.jobdone.top:8088/live/webcricn02/playlist.m3u8?id=115656&pk=582ed9d52613fdd45c5dbc1a62a4ae188d3a3433802dde7504c01501cfd17ca1"
+                type="application/x-mpegURL">
+            </source>
+        </video>
 
-    // }
-    document.querySelector("body").addEventListener("click", async () => {
-      var l =
-        "https://buc01.jobdone.top:8088/live/webcricn02/playlist.m3u8?id=115656&pk=582ed9d52613fdd45c5dbc1a62a4ae188d3a3433802dde7504c01501cfd17ca1";
+</body>
+    <script src="https://vjs.zencdn.net/8.0.4/video.min.js"></script>
+    <script defer type="text/javascript">
+        document.querySelector("body").addEventListener("load", 
+        ()=>
+        {
+            var l = window.location.href.split("?url=").pop();
+            if(l!=""){
+                var player = (window.player = videojs("_player"));
+                 player.src({src: url,type: "application/x-mpegURL",});
+                 player.width(window.innerWidth);
+                 player.enterFullWindow();
+            }
 
-      const src = await (
-        await fetch(l, {
-          headers: {
-            Referer: "https://hd.superhit.xyz/",
-          },
         })
-      ).blob();
-      console.log(src);
-      var player = (window.player = videojs("_player"));
-      player.src({
-        src: URL.createObjectURL(src),
-        type: "application/x-mpegURL",
-      });
-      player.width(window.innerWidth);
-      player.enterFullWindow();
-    });
-  </script>
+
+    </script>
 </html>
